@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Facebook Monetization Guide</title>
+    <style>
+        :root {
+            --primary-color: #a81c1c;
+            --secondary-color: #28a745;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .checkout-container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 480px;
+            overflow: hidden;
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, #4a0e0e, var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        .header-banner h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .urdu-welcome {
+            direction: rtl;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff5f5;
+            border-bottom: 2px dashed rgba(168, 28, 28, 0.2);
+        }
+
+        .urdu-welcome h3 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+
+        .urdu-welcome p {
+            margin: 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .product-preview {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .product-preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .price-tag {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+
+        .price-tag span {
+            text-decoration: line-through;
+            font-size: 14px;
+            color: #777;
+            margin-right: 8px;
+        }
+
+        .payment-box {
+            background: #f1f3f5;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 14px;
+        }
+
+        .payment-box table {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        form {
+            padding: 0 20px 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: #fff;
+        }
+
+        .file-drop-area {
+            border: 2px dashed #ced4da;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background: #fafafa;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .file-drop-area input[type="file"] {
+            position: absolute;
+            left: 0; top: 0; width: 100%; height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-msg {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #statusMessage {
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .success-box {
+            background-color: #f4fbf7;
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 12px;
+            color: #1e5a32;
+        }
+
+        .motivation-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #a81c1c;
+            margin-bottom: 15px;
+            direction: rtl;
+        }
+
+        .email-alert {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="checkout-container">
+    <div class="header-banner">
+        <h2>Secure Checkout</h2>
+    </div>
+
+    <div class="urdu-welcome">
+        <h3>خواب آپ کے، راستہ ہم دکھائیں گے!</h3>
+        <p>فیس بک مونیٹائزیشن اور AI گائیڈ حاصل کرنے کے لیے پیمنٹ کر کے نیچے فارم پُر کریں۔</p>
+    </div>
+
+    <div class="product-preview">
+        <img src="Untitled design (2).png" alt="Ebook Cover" onerror="this.style.display='none'">
+        <div class="price-tag"><span>Rs. 1500</span> Rs. 299 Only</div>
+    </div>
+
+    <div class="payment-box">
+        <strong>💸 Pay First via JazzCash / EasyPaisa / Bank Transfer:</strong>
+        <table>
+            <tr><td><strong>Account No:</strong></td><td>0321-5466712</td></tr>
+            <tr><td><strong>Account Name:</strong></td><td>Muhammad Shabbir</td></tr>
+            <tr><td><strong>Amount:</strong></td><td>Rs. 299</td></tr>
+        </table>
+    </div>
+
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="name@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="whatsapp">WhatsApp Number</label>
+            <input type="text" id="whatsapp" placeholder="03XXXXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+            <label for="paymentMethod">Payment Method Used</label>
+            <select id="paymentMethod" required>
+                <option value="" disabled selected>Choose Method...</option>
+                <option value="JazzCash">JazzCash</option>
+                <option value="EasyPaisa">EasyPaisa</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="tid">Transaction ID (TID)</label>
+            <input type="text" id="tid" placeholder="e.g., 24062412345" required>
+        </div>
+
+        <div class="form-group">
+            <label>Upload Payment Receipt</label>
+            <div class="file-drop-area">
+                <span class="file-msg">📸 Click to upload screenshot</span>
+                <input type="file" id="paymentSlip" accept="image/*" required onchange="updateFileName(this)">
+            </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">Complete My Order & Get PDF</button>
+    </form>
+
+    <div id="statusMessage"></div>
+</div>
+
+<script>
+    function updateFileName(input) {
+        const msg = input.previousElementSibling;
+        if (input.files && input.files[0]) {
+            msg.innerText = "✓ " + input.files[0].name;
+            msg.style.color = "#28a745";
+        }
+    }
+
+    // ⚠️ PASTE YOUR GOOGLE APP SCRIPT WEB APP URL HERE
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxDw9SBgvMtycUTKPnoGokT2Nx7MR6XU2msVBYnzzGg-fPZnFpj83D_jvqsse2AkmuDKQ/exec';
+
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Processing Order...';
+
+        const fileInput = document.getElementById('paymentSlip').files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function() {
+            const base64Data = reader.result.split(',')[1];
+            const formData = new URLSearchParams();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('whatsapp', document.getElementById('whatsapp').value);
+            formData.append('paymentMethod', document.getElementById('paymentMethod').value);
+            formData.append('tid', document.getElementById('tid').value);
+            formData.append('fileContent', base64Data);
+            formData.append('fileType', fileInput.type);
+            formData.append('fileName', fileInput.name);
+
+            fetch(scriptUrl, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result === 'success') {
+                    // Poore form aur payment details ko hide kar dena
+                    document.getElementById('paymentForm').style.display = 'none';
+                    document.querySelector('.payment-box').style.display = 'none';
+                    
+                    statusMessage.innerHTML = `
+                        <div class="success-box">
+                            <div class="motivation-text">🔥 کامیابی انھی کو ملتی ہے جو پہلا قدم اٹھانے کی ہمت کرتے ہیں!</div>
+                            <p>آپ کا آرڈر کامیابی سے موصول ہو چکا ہے۔ آپ نے اپنی آن لائن ارننگ کے سفر کا بہترین آغاز کر دیا ہے، مستقل مزاج رہیں اور آگے بڑھتے رہیں۔</p>
+                            <div class="email-alert">
+                                📬 Please Check Your Email! <br>
+                                ہم نے پی ڈی ایف گائیڈ کا ڈاؤن لوڈ لنک آپ کے ای میل پر بھیج دیا ہے۔ اگر ای میل ان باکس میں نہ ملے، تو ایک بار <b>Spam / Junk</b> فولڈر لازمی چیک کریں۔
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    statusMessage.style.color = '#a81c1c';
+                    statusMessage.innerText = 'Error: ' + data.error;
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Complete My Order & Get PDF';
+                }
+            })
+            .catch(error => {
+                statusMessage.style.color = '#a81c1c';
+                statusMessage.innerText = 'Something went wrong. Please try again.';
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Complete My Order & Get PDF';
+            });
+        };
+        reader.readAsDataURL(fileInput);
+    });
+</script>
+</body>
+</html>
