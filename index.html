@@ -1,49 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Facebook Monetization Guide</title>
+    <title>30-Day Facebook Monetization Challenge using AI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1877F2', // Facebook Blue
+                            darkBlue: '#0A2540',
+                            accent: '#10B981', // Emerald Green for success/trust
+                            warning: '#EF4444', // Red for urgency
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Google Noto Nastaliq Urdu Font Integration */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+        
         :root {
             --primary-color: #a81c1c;
-            --secondary-color: #28a745;
+            --secondary-color: #10B981;
             --bg-color: #f8f9fa;
             --text-color: #333;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        /* Beautiful Nastaliq Typography rule with appropriate spacing spacing */
+        .font-urdu {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaliq', 'Urdu Typesetting', serif;
+            line-height: 2.4;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
         }
 
+        /* Automated Checkout Form Styling */
         .checkout-container {
             background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             width: 100%;
-            max-width: 480px;
             overflow: hidden;
+            border: 2px solid #e2e8f0;
         }
 
-        .header-banner {
+        .checkout-header-banner {
             background: linear-gradient(135deg, #4a0e0e, var(--primary-color));
             color: white;
             text-align: center;
             padding: 25px 20px;
         }
 
-        .header-banner h2 {
+        .checkout-header-banner h2 {
             margin: 0;
             font-size: 22px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .urdu-welcome {
@@ -58,6 +88,7 @@
             color: var(--primary-color);
             margin: 0 0 10px 0;
             font-size: 20px;
+            font-weight: bold;
         }
 
         .urdu-welcome p {
@@ -73,14 +104,15 @@
         }
 
         .product-preview img {
-            max-width: 100%;
+            max-width: 180px;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            margin: 0 auto;
         }
 
         .price-tag {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: var(--primary-color);
             margin-top: 15px;
@@ -88,7 +120,7 @@
 
         .price-tag span {
             text-decoration: line-through;
-            font-size: 14px;
+            font-size: 15px;
             color: #777;
             margin-right: 8px;
         }
@@ -96,8 +128,8 @@
         .payment-box {
             background: #f1f3f5;
             margin: 20px;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 18px;
+            border-radius: 14px;
             border-left: 4px solid var(--primary-color);
             font-size: 14px;
         }
@@ -107,7 +139,11 @@
             margin-top: 8px;
         }
 
-        form {
+        .payment-box td {
+            padding: 4px 0;
+        }
+
+        #paymentForm {
             padding: 0 20px 25px;
         }
 
@@ -115,31 +151,47 @@
             margin-bottom: 18px;
         }
 
-        label {
+        .form-group label {
             display: block;
             font-weight: 600;
             margin-bottom: 6px;
             font-size: 14px;
+            color: #334155;
         }
 
-        input[type="text"], input[type="email"], select {
+        .form-group input[type="text"], 
+        .form-group input[type="email"], 
+        .form-group select {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
             box-sizing: border-box;
             font-size: 14px;
             background-color: #fff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: var(--primary-color);
         }
 
         .file-drop-area {
-            border: 2px dashed #ced4da;
-            border-radius: 8px;
-            padding: 15px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 18px;
             text-align: center;
             background: #fafafa;
             cursor: pointer;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .file-drop-area:hover {
+            background: #f1f5f9;
+            border-color: var(--primary-color);
         }
 
         .file-drop-area input[type="file"] {
@@ -151,7 +203,8 @@
 
         .file-msg {
             font-size: 13px;
-            color: #666;
+            color: #64748b;
+            font-weight: 600;
         }
 
         .submit-btn {
@@ -159,187 +212,666 @@
             background: var(--secondary-color);
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 16px;
+            padding: 16px;
+            font-size: 18px;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            box-shadow: none;
         }
 
         #statusMessage {
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
             font-size: 16px;
             line-height: 1.7;
         }
 
         .success-box {
-            background-color: #f4fbf7;
-            border: 2px solid #28a745;
-            padding: 20px;
-            border-radius: 12px;
-            color: #1e5a32;
+            background-color: #f0fdf4;
+            border: 2px solid #10b981;
+            padding: 24px;
+            border-radius: 16px;
+            color: #065f46;
+            text-align: right;
         }
 
         .motivation-text {
             font-size: 18px;
             font-weight: bold;
             color: #a81c1c;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             direction: rtl;
         }
 
         .email-alert {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 10px;
-            border-radius: 6px;
+            background-color: #fef3c7;
+            color: #92400e;
+            padding: 14px;
+            border-radius: 10px;
             margin-top: 15px;
             font-size: 14px;
             font-weight: 600;
+            text-align: right;
+            border: 1px solid #fde68a;
         }
     </style>
 </head>
-<body>
+<body class="bg-[#F8FAFC] text-slate-800 font-sans overflow-x-hidden">
 
-<div class="checkout-container">
-    <div class="header-banner">
-        <h2>Secure Checkout</h2>
+    <!-- Top Urgency Banner -->
+    <div class="bg-brand-warning text-white text-center py-2 px-4 text-sm font-bold animate-pulse-slow flex justify-center items-center gap-2">
+        <span>⚡ SPECIAL 80% DISCOUNT OFFER ONLY FOR TODAY!</span>
+        <div class="hidden md:flex gap-1 items-center bg-black/30 px-2 py-0.5 rounded text-xs">
+            <i class="fa-regular fa-clock"></i>
+            <span id="banner-timer">14:59</span>
+        </div>
     </div>
 
-    <div class="urdu-welcome">
-        <h3>خواب آپ کے، راستہ ہم دکھائیں گے!</h3>
-        <p>فیس بک مونیٹائزیشن اور AI گائیڈ حاصل کرنے کے لیے پیمنٹ کر کے نیچے فارم پُر کریں۔</p>
-    </div>
+    <!-- Hero Section (Updated to Clean White Theme & Nastaliq Features) -->
+    <header class="relative bg-white text-slate-900 pt-16 pb-20 px-4 overflow-hidden border-b border-slate-100">
+        <!-- Subtle decorative background gradients -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
-    <div class="product-preview">
-        <img src="Untitled design (2).png" alt="Ebook Cover" onerror="this.style.display='none'">
-        <div class="price-tag"><span>Rs. 1500</span> Rs. 299 Only</div>
-    </div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- Badge -->
+            <span class="inline-block bg-brand-blue/10 text-brand-blue text-xs md:text-sm font-bold tracking-wider uppercase px-4 py-1.5 rounded-full mb-6 border border-brand-blue/20 font-urdu">
+                <i class="fa-solid fa-fire text-brand-warning mr-1 animate-bounce"></i> صرف 30 دنوں میں زندگی بدلنے کا موقع!
+            </span>
+            
+            <!-- Premium Hook / Subtitle (Nastaliq Font) -->
+            <p class="text-xl md:text-3xl text-slate-700 font-bold max-w-2xl mx-auto mb-6 leading-relaxed font-urdu">
+                گھر بیٹھے فیس بک سے ڈالر کماؤ — مصنوعی ذہانت (AI) کی مدد سے!
+            </p>
 
-    <div class="payment-box">
-        <strong>💸 Pay First via JazzCash / EasyPaisa / Bank Transfer:</strong>
-        <table>
-            <tr><td><strong>Account No:</strong></td><td>0321-5466712</td></tr>
-            <tr><td><strong>Account Name:</strong></td><td>Muhammad Shabbir</td></tr>
-            <tr><td><strong>Amount:</strong></td><td>Rs. 299</td></tr>
-        </table>
-    </div>
+            <h2 class="text-xl md:text-3xl font-extrabold text-slate-800 mb-6">
+                Facebook Monetization Challenge using AI
+            </h2>
 
-    <form id="paymentForm">
-        <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="John Doe" required>
-        </div>
+            <!-- Main Catchy Persuasive Title (Red Highlighted $1000) -->
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-8 tracking-tight text-slate-900">
+                Sikhein Kis Tarah Aap Earn Kar Sakte Hain <span class="text-red-600 underline decoration-red-600/30 decoration-wavy">$1000</span> Aglay 30 Dinon Mein!
+            </h1>
 
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="name@example.com" required>
-        </div>
+            <!-- Book Mockup Image -->
+            <div class="relative max-w-xs mx-auto mb-10 transition-transform duration-300 hover:scale-105">
+                <div class="absolute inset-0 bg-red-500/10 rounded-2xl blur-lg transform rotate-3 scale-95"></div>
+                <img src="Untitled design (5).png" alt="Facebook Monetization AI Challenge Book" class="relative z-10 w-full h-auto mx-auto rounded-2xl shadow-2xl border-4 border-slate-200/40">
+            </div>
 
-        <div class="form-group">
-            <label for="whatsapp">WhatsApp Number</label>
-            <input type="text" id="whatsapp" placeholder="03XXXXXXXXX" required>
-        </div>
-
-        <div class="form-group">
-            <label for="paymentMethod">Payment Method Used</label>
-            <select id="paymentMethod" required>
-                <option value="" disabled selected>Choose Method...</option>
-                <option value="JazzCash">JazzCash</option>
-                <option value="EasyPaisa">EasyPaisa</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="tid">Transaction ID (TID)</label>
-            <input type="text" id="tid" placeholder="e.g., 24062412345" required>
-        </div>
-
-        <div class="form-group">
-            <label>Upload Payment Receipt</label>
-            <div class="file-drop-area">
-                <span class="file-msg">📸 Click to upload screenshot</span>
-                <input type="file" id="paymentSlip" accept="image/*" required onchange="updateFileName(this)">
+            <!-- Trust Badges -->
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-600 mb-4 font-semibold">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-accent"></i> No Experience Needed</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-accent"></i> Smart Phone Friendly</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-accent"></i> 100% Practical Guide</span>
             </div>
         </div>
+    </header>
 
-        <button type="submit" id="submitBtn" class="submit-btn">Complete My Order & Get PDF</button>
-    </form>
+    <!-- Main Content Grid -->
+    <main class="max-w-4xl mx-auto px-4 -mt-10 relative z-20">
 
-    <div id="statusMessage"></div>
-</div>
+        <!-- Critical Question Section (Emotional Hook with Nastaliq highlights and Corrected Roman Directions) -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-slate-100">
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 text-center" dir="ltr">
+                🤔 Kya Aap Bhi Har Raat Isi Fikr Mein Sote Hain?
+            </h3>
+            
+            <div class="space-y-4 text-right">
+                <div class="flex gap-3 items-start justify-start flex-row-reverse bg-red-50 p-4 rounded-xl border-r-4 border-brand-warning">
+                    <span class="text-2xl mt-1">📉</span>
+                    <div class="w-full text-right" dir="ltr">
+                        <p class="font-bold text-red-900 text-base md:text-lg text-right">Kia is mehangai mein aap ki income kam par rahi hai?</p>
+                        <p class="text-sm text-red-700 mt-1 text-right">Daily ki zarooriyat poori karte karte sara paisa khatam ho jata hai.</p>
+                    </div>
+                </div>
 
-<script>
-    function updateFileName(input) {
-        const msg = input.previousElementSibling;
-        if (input.files && input.files[0]) {
-            msg.innerText = "✓ " + input.files[0].name;
-            msg.style.color = "#28a745";
-        }
-    }
+                <div class="flex gap-3 items-start justify-start flex-row-reverse bg-red-50 p-4 rounded-xl border-r-4 border-brand-warning">
+                    <span class="text-2xl mt-1">💔</span>
+                    <div class="w-full text-right" dir="ltr">
+                        <p class="font-bold text-red-900 text-base md:text-lg text-right">Kia har mahine bills dekh kar dil doobne lagta hai?</p>
+                        <p class="text-sm text-red-700 mt-1 text-right">Ghar chalane ke liye aur doston se udhaar mangne ki naubat aa chuki hai.</p>
+                    </div>
+                </div>
 
-    // ⚠️ PASTE YOUR GOOGLE APP SCRIPT WEB APP URL HERE
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxDw9SBgvMtycUTKPnoGokT2Nx7MR6XU2msVBYnzzGg-fPZnFpj83D_jvqsse2AkmuDKQ/exec';
+                <div class="flex gap-3 items-start justify-start flex-row-reverse bg-red-50 p-4 rounded-xl border-r-4 border-brand-warning">
+                    <span class="text-2xl mt-1">🥺</span>
+                    <div class="w-full text-right">
+                        <p class="font-bold text-red-900 text-base md:text-lg font-urdu">کیا آپ بھی ہر ماہ اپنی خواہشات کو قربان کر دیتے ہیں؟</p>
+                        <p class="text-sm text-red-700 mt-1 text-right" dir="ltr">Maa Baap ke khwab, behen ki shadi, ya apna ghar... Sab adhura lagta hai.</p>
+                    </div>
+                </div>
+            </div>
 
-    document.getElementById('paymentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const submitBtn = document.getElementById('submitBtn');
-        const statusMessage = document.getElementById('statusMessage');
-        
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Processing Order...';
+            <div class="mt-8 text-center bg-blue-50 rounded-xl p-5 border border-blue-100">
+                <p class="text-lg font-bold text-blue-900 mb-2">💡 Sachi baat yeh hai dost...</p>
+                <p class="text-slate-700 leading-relaxed text-sm md:text-base">
+                    Halaat ka rona rone <span class="font-urdu text-red-600 font-bold">سے گھر کا چولہا نہیں چلے گا!</span> 2026 mein bhi agar aap ke paas smartphone hai aur aap har mahine paison ke liye pareshan hain, to kasoor aap ke aik sahi faisle na lene ka hai!
+                </p>
+            </div>
+        </section>
 
-        const fileInput = document.getElementById('paymentSlip').files[0];
-        const reader = new FileReader();
+        <!-- Product Value Proposition & Features -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-slate-100 text-right">
+            <h3 class="text-2xl font-bold text-brand-darkBlue mb-6 text-center flex items-center justify-center gap-2">
+                <span>Is Blueprint Se Aap Kia Hasil Karenge?</span>
+                <i class="fa-solid fa-trophy text-amber-500"></i>
+            </h3>
 
-        reader.onloadend = function() {
-            const base64Data = reader.result.split(',')[1];
-            const formData = new URLSearchParams();
-            formData.append('name', document.getElementById('name').value);
-            formData.append('email', document.getElementById('email').value);
-            formData.append('whatsapp', document.getElementById('whatsapp').value);
-            formData.append('paymentMethod', document.getElementById('paymentMethod').value);
-            formData.append('tid', document.getElementById('tid').value);
-            formData.append('fileContent', base64Data);
-            formData.append('fileType', fileInput.type);
-            formData.append('fileName', fileInput.name);
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors flex gap-3 flex-row-reverse">
+                    <div class="bg-brand-blue/10 text-brand-blue w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-950 mb-1">Bina Face Dikhaye Video Creation</h4>
+                        <p class="text-sm text-slate-600">AI ki madad se high quality viral script likhein aur automated tools se video banayein.</p>
+                    </div>
+                </div>
 
-            fetch(scriptUrl, { method: 'POST', body: formData })
-            .then(response => response.json())
-            .then(data => {
-                if(data.result === 'success') {
-                    // Poore form aur payment details ko hide kar dena
-                    document.getElementById('paymentForm').style.display = 'none';
-                    document.querySelector('.payment-box').style.display = 'none';
-                    
-                    statusMessage.innerHTML = `
-                        <div class="success-box">
-                            <div class="motivation-text">🔥 کامیابی انھی کو ملتی ہے جو پہلا قدم اٹھانے کی ہمت کرتے ہیں!</div>
-                            <p>آپ کا آرڈر کامیابی سے موصول ہو چکا ہے۔ آپ نے اپنی آن لائن ارننگ کے سفر کا بہترین آغاز کر دیا ہے، مستقل مزاج رہیں اور آگے بڑھتے رہیں۔</p>
-                            <div class="email-alert">
-                                📬 Please Check Your Email! <br>
-                                ہم نے پی ڈی ایف گائیڈ کا ڈاؤن لوڈ لنک آپ کے ای میل پر بھیج دیا ہے۔ اگر ای میل ان باکس میں نہ ملے، تو ایک بار <b>Spam / Junk</b> فولڈر لازمی چیک کریں۔
-                            </div>
+                <div class="p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors flex gap-3 flex-row-reverse">
+                    <div class="bg-brand-blue/10 text-brand-blue w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-950 mb-1">Fast Track 5000 Followers Method</h4>
+                        <p class="text-sm text-slate-600">Organic tareeqon aur groups ka istemal kar ke jaldi page grow karne ke raaz.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors flex gap-3 flex-row-reverse">
+                    <div class="bg-brand-blue/10 text-brand-blue w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-950 mb-1">Direct Bank Wire in Pakistan</h4>
+                        <p class="text-sm text-slate-600">Pakistani bank account ko safe tareeqe se connect karne aur dollars nikalwane ki complete setting.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors flex gap-3 flex-row-reverse">
+                    <div class="bg-brand-blue/10 text-brand-blue w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-950 mb-1">Lifetime Free AI Cheat Sheet</h4>
+                        <p class="text-sm text-slate-600">Aapko video editing aur voiceover par kharcha karne ki koi zaroorat nahi hogi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter Overview Carousel / Static Cards (Nastaliq Urdu Headers) -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-slate-100 text-right">
+            <h3 class="text-2xl font-bold text-brand-darkBlue mb-6 text-center font-urdu">📚 کتاب کے خصوصی ابواب (Chapter Insights)</h3>
+            
+            <div class="space-y-4">
+                <!-- Ch 1 -->
+                <div class="border border-slate-100 rounded-xl p-4 hover:border-brand-blue/30 transition-all">
+                    <div class="flex justify-between items-center flex-row-reverse mb-2">
+                        <span class="bg-blue-100 text-brand-blue text-xs font-bold px-2.5 py-1 rounded-full">WEEK 1</span>
+                        <h4 class="font-bold text-slate-900 font-urdu">باب نمبر 1 تا 3: فیس بک مونیٹائزیشن اور جدید AI ٹولز</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">ان اسٹریم ایڈز، اسٹارز اور برانڈ ڈیلز کی بنیادی ترتیب۔ ChatGPT اور Claude AI کی مدد سے ریلز کے لیے وائرل اسکرپٹس منٹوں میں تیار کرنا۔</p>
+                </div>
+                <!-- Ch 2 -->
+                <div class="border border-slate-100 rounded-xl p-4 hover:border-brand-blue/30 transition-all">
+                    <div class="flex justify-between items-center flex-row-reverse mb-2">
+                        <span class="bg-blue-100 text-brand-blue text-xs font-bold px-2.5 py-1 rounded-full">WEEK 2</span>
+                        <h4 class="font-bold text-slate-900 font-urdu">باب نمبر 4 تا 6: پیج سیٹ اپ اور گروتھ فارمولا</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">سب سے زیادہ دیکھے جانے والے پاکستانی موضوعات (Cooking, Tech, Tips) کا انتخاب، ریلز کو وائرل کرنے کا سنہری 3 سیکنڈ ہک فارمولا اور مونیٹائزیشن کے لیے اپلائی کرنے کا مکمل طریقہ۔</p>
+                </div>
+                <!-- Ch 3 -->
+                <div class="border border-slate-100 rounded-xl p-4 hover:border-brand-blue/30 transition-all">
+                    <div class="flex justify-between items-center flex-row-reverse mb-2">
+                        <span class="bg-blue-100 text-brand-blue text-xs font-bold px-2.5 py-1 rounded-full">WEEK 3 & 4</span>
+                        <h4 class="font-bold text-slate-900 font-urdu">باب نمبر 7 تا 10: ڈالر وصول کرنا اور بزنس اسکیلنگ</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">پاکستان بینک وائر ٹرانسفر اور Payoneer کی مدد سے کمیشن فری ڈالرز حاصل کرنا۔ ایک پیج کو بڑھا کر کثیر پیجز پر خودکار طریقے سے لانے کا خفیہ فارمولا۔</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8 Premium Bonuses Visual Highlight (Nastaliq Header) -->
+        <section class="bg-gradient-to-br from-emerald-950 to-slate-900 rounded-3xl text-white p-6 md:p-10 mb-8 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-accent/20 via-transparent to-transparent"></div>
+            
+            <div class="relative z-10">
+                <div class="text-center mb-10">
+                    <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 text-xs md:text-sm font-bold uppercase px-4 py-1.5 rounded-full mb-3 inline-block font-urdu">
+                        🎁 لمیٹڈ ٹائم بونس آفر
+                    </span>
+                    <h3 class="text-2xl md:text-4xl font-extrabold mb-4 text-amber-300 font-urdu">8 پریمیم بونس تحائف بالکل مفت!</h3>
+                    <p class="text-slate-300 text-sm md:text-base font-urdu">اگر آپ آج یہ گائیڈ لیتے ہیں تو آپ کو یہ تمام تحائف لائف ٹائم کے لیے بالکل مفت ملیں گے (مالیت 5,000+ روپے):</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-list-check"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">1۔ 30 روزہ مونیٹائزیشن چیک لسٹ</h4>
+                            <p class="text-xs text-slate-300">روزانہ اپنے پیج کی پیش رفت کو ٹریک کریں۔</p>
                         </div>
-                    `;
-                } else {
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-calculator"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">2۔ روزانہ لائیو انکم ٹریکر شیٹ</h4>
+                            <p class="text-xs text-slate-300">اپنی کمائی کا خودکار حساب رکھنے والا ڈیجیٹل فارمیٹ۔</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-laptop-code"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">3۔ جدید ترین AI ٹولز چیٹ شیٹ 2026</h4>
+                            <p class="text-xs text-slate-300">بہترین مفت ٹولز کی پریمیم فہرست۔</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-terminal"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">4۔ 100+ فیس بک مارکیٹنگ پراپٹس</h4>
+                            <p class="text-xs text-slate-300">کاپی پیسٹ چیٹ جی پی ٹی پراپٹس لائبریری۔</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-calendar-days"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">5۔ 30 روزہ وائرل مواد کیلنڈر</h4>
+                            <p class="text-xs text-slate-300">روزانہ کی بنیاد پر سوچنے کی پریشانی ختم۔</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-scroll"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">6۔ وائرل ریلز اسکرپٹ ٹیمپلیٹس</h4>
+                            <p class="text-xs text-slate-300">صرف خالی جگہ پُر کریں اور ریل ریکارڈ کریں۔</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-circle-check"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">7۔ مونیٹائزیشن اہلیت کی فائنل چیک لسٹ</h4>
+                            <p class="text-xs text-slate-300">پتہ لگائیں کہ آپ اپلائی کرنے کے لیے کتنے تیار ہیں۔</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-center justify-start flex-row-reverse bg-white/5 border border-white/10 rounded-xl p-3">
+                        <span class="text-2xl bg-amber-400/20 text-amber-400 p-2 rounded-lg"><i class="fa-solid fa-user-secret"></i></span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-sm font-urdu">8۔ پیج گروتھ کی خفیہ ٹرکس</h4>
+                            <p class="text-xs text-slate-300">پہلے 60 منٹس کا خفیہ اصول اور کراس پروموشن ہیک۔</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials (Nastaliq Names & Quotes) -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-slate-100">
+            <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center font-urdu">🎯 کامیاب کریٹرز کی حقیقی کہانیاں (Success Stories)</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
+                <div class="border border-slate-100 bg-slate-50 p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-end gap-1 mb-3 text-amber-400">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 italic leading-relaxed mb-4 font-semibold text-right">
+                            "مجھے شروع میں ڈر تھا کہ میری انگلش اچھی نہیں ہے لیکن AI ٹولز کی مدد سے کام بہت آسان ہو گیا۔ 22ویں دن میری پہلی آمدنی آئی۔ اب میں روزانہ 40 سے 50 ڈالر کما رہا ہوں۔"
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200/60 pt-3 mt-2">
+                        <span class="font-bold block text-slate-900 text-sm">احمد</span>
+                        <span class="text-xs text-slate-500">لاہور</span>
+                    </div>
+                </div>
+
+                <div class="border border-slate-100 bg-slate-50 p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-end gap-1 mb-3 text-amber-400">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 italic leading-relaxed mb-4 font-semibold text-right">
+                            "میں ایک ہاؤس وائف ہوں۔ گھر کے کام کاج کے ساتھ روزانہ صرف دو گھنٹے کام کرتی ہوں۔ پہلے مہینے میں نے 600 ڈالر کمائے، میرے شوہر کو تو یقین ہی نہیں آ رہا تھا!"
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200/60 pt-3 mt-2">
+                        <span class="font-bold block text-slate-900 text-sm">ثناء</span>
+                        <span class="text-xs text-slate-500">کراچی</span>
+                    </div>
+                </div>
+
+                <div class="border border-slate-100 bg-slate-50 p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-end gap-1 mb-3 text-amber-400">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 italic leading-relaxed mb-4 font-semibold text-right">
+                            "پڑھائی مکمل کرنے کے بعد نوکری نہیں مل رہی تھی۔ میں نے اس گائیڈ کو فالو کیا اور 30 دنوں میں $800 کمائے۔ اب میں فل ٹائم فیس بک کریٹر بن چکا ہوں۔"
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200/60 pt-3 mt-2">
+                        <span class="font-bold block text-slate-900 text-sm">بلال</span>
+                        <span class="text-xs text-slate-500">ملتان</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Automated Interactive Checkout Box -->
+        <section id="checkout-section" class="mb-12">
+            <div class="checkout-container">
+                <div class="checkout-header-banner">
+                    <h2 class="font-urdu">محفوظ ادائیگی (Secure Checkout)</h2>
+                </div>
+
+                <div class="urdu-welcome font-urdu">
+                    <h3 class="font-bold">خواب آپ کے، راستہ ہم دکھائیں گے!</h3>
+                    <p>فیس بک مونیٹائزیشن اور AI گائیڈ حاصل کرنے کے لیے پیمنٹ کر کے نیچے فارم پُر کریں۔</p>
+                </div>
+
+                <div class="product-preview">
+                    <!-- Real Book Mockup Image in Form Preview -->
+                    <img src="Untitled design (5).png" alt="Ebook Cover" class="max-w-[180px] w-full h-auto rounded-2xl shadow-xl border-2 border-slate-100 hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'">
+                    <div class="price-tag"><span>Rs. 1500</span> Rs. 299 Only</div>
+                </div>
+
+                <div class="payment-box text-right font-urdu">
+                    <strong>💸 پہلے نیچے دیے گئے اکاؤنٹ پر Rs. 299 بھیجیں:</strong>
+                    <table>
+                        <tr class="flex justify-between flex-row-reverse border-b border-slate-200/60 py-1.5">
+                            <td class="font-bold">اکاؤنٹ نمبر (Account No):</td>
+                            <td class="font-mono font-bold select-all text-brand-warning">0321-5466712</td>
+                        </tr>
+                        <tr class="flex justify-between flex-row-reverse border-b border-slate-200/60 py-1.5">
+                            <td class="font-bold">اکاؤنٹ نام (Account Name):</td>
+                            <td class="text-slate-900 font-bold">Muhammad Shabbir</td>
+                        </tr>
+                        <tr class="flex justify-between flex-row-reverse py-1.5">
+                            <td class="font-bold">Amount (رقم):</td>
+                            <td class="font-bold text-brand-accent">Rs. 299</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <form id="paymentForm">
+                    <div class="form-group text-right">
+                        <label for="name" class="font-urdu">پورا نام (Full Name)</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <label for="email" class="font-urdu">ای میل ایڈریس (Email Address)</label>
+                        <input type="email" id="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <label for="whatsapp" class="font-urdu">واٹس ایپ نمبر (WhatsApp Number)</label>
+                        <input type="text" id="whatsapp" placeholder="03XXXXXXXXX" required>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <label for="paymentMethod" class="font-urdu">طریقہ ادائیگی (Payment Method)</label>
+                        <select id="paymentMethod" required>
+                            <option value="" disabled selected>ادائیگی کا ذریعہ منتخب کریں...</option>
+                            <option value="JazzCash">JazzCash</option>
+                            <option value="EasyPaisa">EasyPaisa</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <label for="tid" class="font-urdu">رقم بھیجنے کا آئی ڈی نمبر (TID)</label>
+                        <input type="text" id="tid" placeholder="e.g., 24062412345" required>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <label class="font-urdu">پیمنٹ رسید کا اسکرین شاٹ (Upload Receipt)</label>
+                        <div class="file-drop-area">
+                            <span class="file-msg">📸 رسید اپلوڈ کرنے کے لیے یہاں کلک کریں</span>
+                            <input type="file" id="paymentSlip" accept="image/*" required onchange="updateFileName(this)">
+                        </div>
+                    </div>
+
+                    <!-- Live Hope / Promise Section (Nastaliq) -->
+                    <div class="bg-emerald-50 rounded-2xl p-5 text-center text-emerald-950 text-sm leading-relaxed mb-6 border border-emerald-100 font-urdu">
+                        🌱 <strong>امید کی ایک نئی صبح آپ کا انتظار کر رہی ہے؛ آئیے مل کر اپنے حالات بدلتے ہیں!</strong><br>
+                        حلال کمائی کی شروعات کا فیصلہ صرف ایک کلک دور ہے۔
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="submit-btn">Complete My Order & Get Instant PDF Access 🚀</button>
+                </form>
+
+                <div id="statusMessage"></div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion (Updated and Correctly Aligned to Left Side for Roman Urdu Layout) -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-16 border border-slate-100 text-left" dir="ltr">
+            <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center">Aksar Pooche Janey Wale Sawalat (FAQ)</h3>
+
+            <div class="space-y-4">
+                <div class="border-b border-slate-100 pb-4">
+                    <button type="button" onclick="toggleFaq(1)" class="w-full flex justify-between items-center text-slate-900 font-bold text-lg focus:outline-none">
+                        <span class="w-full text-left">1. Kya yeh guide waqayee naye logon ke liye aasan hai?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-slate-400 transition-transform ml-2"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left">
+                        Ji han, bilkul! Is guide ko is tarah likha gaya hai ke agar aap ne kabhi Facebook Monetization par kaam nahi kiya, to bhi aap pehle din se seekh kar asani se shuruat kar sakte hain.
+                    </div>
+                </div>
+
+                <div class="border-b border-slate-100 pb-4">
+                    <button type="button" onclick="toggleFaq(2)" class="w-full flex justify-between items-center text-slate-900 font-bold text-lg focus:outline-none">
+                        <span class="w-full text-left">2. Mujhe guide aur premium bonuses kis tarah milenge?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-slate-400 transition-transform ml-2"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left">
+                        Jaise hi aap order form submit karenge, aapka order successfully register ho jayega aur fauran hi guide aur tamam 8 bonuses ka download link automatically aap ke email address par bhej diya jayega.
+                    </div>
+                </div>
+
+                <div class="border-b border-slate-100 pb-4">
+                    <button type="button" onclick="toggleFaq(3)" class="w-full flex justify-between items-center text-slate-900 font-bold text-lg focus:outline-none">
+                        <span class="w-full text-left">3. Kya Facebook Monetization Pakistan mein kaam kar rahi hai?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-slate-400 transition-transform ml-2"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left">
+                        Ji han! 2026 mein Pakistan mein rehte hue official aur doosre mahfooz tareeqon ke zariye Facebook se halal rozgar kamana aur seedha Pakistani banks mein paise receive karna bilkul mumkin aur asan ho chuka hai.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Updated to English / Roman Urdu) -->
+    <footer class="bg-brand-darkBlue text-slate-400 py-12 px-4 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto text-center space-y-4">
+            <h4 class="text-white font-bold text-lg">Facebook Monetization & AI Challenge</h4>
+            <p class="text-sm max-w-md mx-auto text-slate-400 leading-relaxed text-center">
+                Yeh guide sirf educational purposes ke liye hai. Nataij aap ki apni mehnat, mustaqil mizaji, aur hikmat-e-amli par munhasir hain.
+            </p>
+            <div class="flex justify-center gap-6 text-xs text-slate-500 pt-4">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms & Conditions</a>
+                <a href="#" class="hover:text-white">Disclaimer</a>
+            </div>
+            <p class="text-xs text-slate-600 pt-4">© 2026 Your Friend & Guide. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Social Proof Popups (Simulates real-time sales with Nastaliq styling) -->
+    <div id="social-proof-popup" class="fixed bottom-4 left-4 z-50 bg-white shadow-2xl rounded-2xl border border-slate-100 p-4 max-w-sm flex items-center gap-3 transition-transform duration-500 translate-y-96 animate-fade-in font-urdu">
+        <div class="bg-brand-blue/10 text-brand-blue w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-circle-check text-brand-accent"></i>
+        </div>
+        <div class="text-left text-xs">
+            <p class="font-bold text-slate-950 text-right font-urdu" id="proof-text">احمد نے لاہور سے گائیڈ خرید لی ہے!</p>
+            <p class="text-slate-400 mt-0.5 text-right font-sans" id="proof-time">Just 2 minutes ago</p>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Set Scarcity Timer
+        let timeRemaining = 14 * 60 + 59; // 14:59 in seconds
+        const bannerTimerElement = document.getElementById('banner-timer');
+        const checkoutTimerElement = document.getElementById('checkout-timer');
+
+        function updateTimer() {
+            let minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+            
+            // Format double digits
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            const timeString = `${minutes}:${seconds}`;
+            bannerTimerElement.textContent = timeString;
+            checkoutTimerElement.textContent = timeString;
+
+            if (timeRemaining > 0) {
+                timeRemaining--;
+            } else {
+                timeRemaining = 14 * 60 + 59; // Loop timer for constant dynamic urgency
+            }
+        }
+        setInterval(updateTimer, 1000);
+
+        // Update File Name on receipt upload
+        function updateFileName(input) {
+            const msg = input.previousElementSibling;
+            if (input.files && input.files[0]) {
+                msg.innerText = "✓ " + input.files[0].name;
+                msg.style.color = "#10B981";
+            }
+        }
+
+        // Toggle Accordions (FAQs)
+        function toggleFaq(index) {
+            const ans = document.getElementById(`faq-ans-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Simulated Social Proof Real-time Popups
+        const names = ["احمد", "عثمان", "زینب", "حمزہ", "عائشہ", "عمران", "سارہ", "شہزاد", "بلال"];
+        const cities = ["لاہور", "کراچی", "اسلام آباد", "ملتان", "فیصل آباد", "راولپنڈی", "پشاور", "کوئٹہ"];
+        const popup = document.getElementById('social-proof-popup');
+        const proofText = document.getElementById('proof-text');
+        const proofTime = document.getElementById('proof-time');
+
+        function triggerSocialProof() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            const times = ["Just now", "1 minute ago", "2 minutes ago", "3 minutes ago"];
+            const randomTime = times[Math.floor(Math.random() * times.length)];
+
+            proofText.textContent = `${randomName} نے ${randomCity} سے گائیڈ حاصل کی ہے! 🔥`;
+            proofTime.textContent = randomTime;
+
+            popup.classList.remove('translate-y-96');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                popup.classList.add('translate-y-96');
+            }, 5000);
+        }
+
+        // Loop social proof popup every 25 seconds
+        setInterval(triggerSocialProof, 25000);
+        setTimeout(triggerSocialProof, 3000); // Initial trigger
+
+        // ⚠️ GOOGLE APP SCRIPT WEB APP URL
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxDw9SBgvMtycUTKPnoGokT2Nx7MR6XU2msVBYnzzGg-fPZnFpj83D_jvqsse2AkmuDKQ/exec';
+
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Processing Order...';
+
+            const fileInput = document.getElementById('paymentSlip').files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                const base64Data = reader.result.split(',')[1];
+                const formData = new URLSearchParams();
+                formData.append('name', document.getElementById('name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('whatsapp', document.getElementById('whatsapp').value);
+                formData.append('paymentMethod', document.getElementById('paymentMethod').value);
+                formData.append('tid', document.getElementById('tid').value);
+                formData.append('fileContent', base64Data);
+                formData.append('fileType', fileInput.type);
+                formData.append('fileName', fileInput.name);
+
+                fetch(scriptUrl, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.result === 'success') {
+                        // Poore form aur payment details ko hide kar dena
+                        document.getElementById('paymentForm').style.display = 'none';
+                        document.querySelector('.payment-box').style.display = 'none';
+                        document.querySelector('.product-preview').style.display = 'none';
+                        
+                        statusMessage.innerHTML = `
+                            <div class="success-box">
+                                <div class="motivation-text">🔥 کامیابی انھی کو ملتی ہے جو پہلا قدم اٹھانے کی ہمت کرتے ہیں!</div>
+                                <p class="font-urdu">آپ کا آرڈر کامیابی سے موصول ہو چکا ہے۔ آپ نے اپنی آن لائن ارننگ کے سفر کا بہترین آغاز کر دیا ہے، مستقل مزاج رہیں اور آگے بڑھتے رہیں۔</p>
+                                <div class="email-alert font-urdu">
+                                    📬 ای میل چیک کریں! <br>
+                                    ہم نے پی ڈی ایف گائیڈ کا ڈاؤن لنک آپ کے ای میل پر بھیج دیا ہے۔ اگر ای میل ان باکس میں نہ ملے، تو ایک بار <b>Spam / Junk</b> فولڈر لازمی چیک کریں۔
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        statusMessage.style.color = '#a81c1c';
+                        statusMessage.innerText = 'Error: ' + data.error;
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Complete My Order & Get Instant PDF Access 🚀';
+                    }
+                })
+                .catch(error => {
                     statusMessage.style.color = '#a81c1c';
-                    statusMessage.innerText = 'Error: ' + data.error;
+                    statusMessage.innerText = 'Something went wrong. Please try again.';
                     submitBtn.disabled = false;
-                    submitBtn.innerText = 'Complete My Order & Get PDF';
-                }
-            })
-            .catch(error => {
-                statusMessage.style.color = '#a81c1c';
-                statusMessage.innerText = 'Something went wrong. Please try again.';
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Complete My Order & Get PDF';
-            });
-        };
-        reader.readAsDataURL(fileInput);
-    });
-</script>
+                    submitBtn.innerText = 'Complete My Order & Get Instant PDF Access 🚀';
+                });
+            };
+            reader.readAsDataURL(fileInput);
+        });
+    </script>
 </body>
 </html>
