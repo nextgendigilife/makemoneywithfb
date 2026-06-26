@@ -26,7 +26,7 @@
         }
     </script>
     <!-- FontAwesome for Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link class="image-fallback" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Google Noto Nastaliq Urdu Font Integration */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
@@ -77,8 +77,8 @@
         }
 
         .urdu-welcome {
-            direction: rtl;
-            text-align: center;
+            direction: ltr;
+            text-align: left;
             padding: 20px;
             background-color: #fff5f5;
             border-bottom: 2px dashed rgba(168, 28, 28, 0.2);
@@ -245,7 +245,7 @@
             padding: 24px;
             border-radius: 16px;
             color: #065f46;
-            text-align: right;
+            text-align: left;
         }
 
         .motivation-text {
@@ -253,7 +253,7 @@
             font-weight: bold;
             color: #a81c1c;
             margin-bottom: 12px;
-            direction: rtl;
+            direction: ltr;
         }
 
         .email-alert {
@@ -264,7 +264,7 @@
             margin-top: 15px;
             font-size: 14px;
             font-weight: 600;
-            text-align: right;
+            text-align: left;
             border: 1px solid #fde68a;
         }
     </style>
@@ -272,7 +272,7 @@
 <body class="bg-[#F8FAFC] text-slate-800 font-sans overflow-x-hidden">
 
     <!-- Top Urgency Banner -->
-    <div class="bg-brand-warning text-white text-center py-2 px-4 text-sm font-bold animate-pulse-slow flex justify-center items-center gap-2 animate-pulse-slow">
+    <div class="bg-brand-warning text-white text-center py-2 px-4 text-sm font-bold animate-pulse-slow flex justify-center items-center gap-2">
         <span>⚡ SPECIAL 80% DISCOUNT OFFER ONLY FOR TODAY!</span>
         <div class="hidden md:flex gap-1 items-center bg-black/30 px-2 py-0.5 rounded text-xs">
             <i class="fa-regular fa-clock"></i>
@@ -324,7 +324,7 @@
     <!-- Main Content Grid -->
     <main class="max-w-4xl mx-auto px-4 -mt-10 relative z-20">
 
-        <!-- Critical Question Section (Emotional Hook with Nastaliq highlights and Corrected Roman Directions) -->
+        <!-- Critical Question Section (Emotional Hook with Nastaliq highlights and Corrected Roman Directions for straight Question Marks) -->
         <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-slate-100">
             <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 text-center" dir="ltr">
                 🤔 Kya Aap Bhi Har Raat Isi Fikr Mein Sote Hain?
@@ -366,8 +366,8 @@
 
         <!-- Product Value Proposition & Features -->
         <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-slate-100 text-right">
-            <h3 class="text-2xl font-bold text-brand-darkBlue mb-6 text-center flex items-center justify-center gap-2">
-                <span>?Is Blueprint Se Aap Kia Hasil Karenge</span>
+            <h3 class="text-2xl font-bold text-brand-darkBlue mb-6 text-center flex items-center justify-center gap-2" dir="ltr">
+                <span class="text-right">Is Blueprint Se Aap Kia Hasil Karenge?</span>
                 <i class="fa-solid fa-trophy text-amber-500"></i>
             </h3>
 
@@ -579,16 +579,17 @@
             </div>
         </section>
 
-        <!-- Automated Interactive Checkout Box -->
+        <!-- Automated Interactive Checkout Box (FULLY ALIGNED TO THE LEFT) -->
         <section id="checkout-section" class="mb-12">
             <div class="checkout-container">
                 <div class="checkout-header-banner">
-                    <h2 class="font-urdu">محفوظ ادائیگی (Secure Checkout)</h2>
+                    <h2>Secure Checkout</h2>
                 </div>
 
-                <div class="urdu-welcome font-urdu">
-                    <h3 class="font-bold">خواب آپ کے، راستہ ہم دکھائیں گے!</h3>
-                    <p>فیس بک مونیٹائزیشن اور AI گائیڈ حاصل کرنے کے لیے پیمنٹ کر کے نیچے فارم پُر کریں۔</p>
+                <!-- Aligned Left strictly LTR style -->
+                <div class="urdu-welcome" dir="ltr">
+                    <h3 class="font-bold text-left">Khab aapke, rasta hum dikhayenge!</h3>
+                    <p class="text-left">Facebook Monetization aur AI Guide haasil karne ke liye payment kar ke neeche diya gaya form fill karein.</p>
                 </div>
 
                 <div class="product-preview">
@@ -597,64 +598,103 @@
                     <div class="price-tag"><span>Rs. 1500</span> Rs. 299 Only</div>
                 </div>
 
-                <div class="payment-box text-right font-urdu">
-                    <strong>💸 پہلے نیچے دیے گئے اکاؤنٹ پر Rs. 299 بھیجیں:</strong>
-                    <table>
-                        <tr class="flex justify-between flex-row-reverse border-b border-slate-200/60 py-1.5">
-                            <td class="font-bold">اکاؤنٹ نمبر (Account No)</td>
+                <!-- Payment Box Left-Aligned -->
+                <div class="payment-box text-left" dir="ltr">
+                    <strong class="block text-left text-slate-800 mb-2">💸 Pay First via JazzCash / EasyPaisa / Bank Transfer:</strong>
+                    <table class="w-full">
+                        <tr class="flex justify-between border-b border-slate-200/60 py-1.5">
+                            <td class="font-bold">Account No:</td>
                             <td class="font-mono font-bold select-all text-brand-warning">0321-5466712</td>
                         </tr>
-                        <tr class="flex justify-between flex-row-reverse border-b border-slate-200/60 py-1.5">
-                            <td class="font-bold">اکاؤنٹ نام (Account Name)</td>
+                        <tr class="flex justify-between border-b border-slate-200/60 py-1.5">
+                            <td class="font-bold">Account Name:</td>
                             <td class="text-slate-900 font-bold">Muhammad Shabbir</td>
                         </tr>
-                        <tr class="flex justify-between flex-row-reverse py-1.5">
-                            <td class="font-bold">Amount (رقم)</td>
+                        <tr class="flex justify-between py-1.5">
+                            <td class="font-bold">Amount:</td>
                             <td class="font-bold text-brand-accent">Rs. 299</td>
                         </tr>
                     </table>
                 </div>
 
+                <!-- FORM FIELDS ALIGNED TO THE LEFT (ltr) -->
                 <form id="paymentForm">
-                    <div class="form-group text-right">
-                        <label for="name" class="font-urdu">پورا نام (Full Name)</label>
-                        <input type="text" id="name" placeholder="John Doe" required>
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="name" class="block text-left font-bold text-slate-700">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required class="text-left">
                     </div>
 
-                    <div class="form-group text-right">
-                        <label for="email" class="font-urdu">ای میل ایڈریس (Email Address)</label>
-                        <input type="email" id="email" placeholder="name@example.com" required>
+                    <!-- Email Field with custom note about receiving the book -->
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="email" class="block text-left font-bold text-slate-700">Email Address <span class="text-brand-warning font-semibold text-xs">(Jis par PDF book chahiye wo email address enter karein)</span></label>
+                        <input type="email" id="email" placeholder="name@example.com" required class="text-left">
                     </div>
 
-                    <div class="form-group text-right">
-                        <label for="whatsapp" class="font-urdu">واٹس ایپ نمبر (WhatsApp Number)</label>
-                        <input type="text" id="whatsapp" placeholder="03XXXXXXXXX" required>
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="whatsapp" class="block text-left font-bold text-slate-700">WhatsApp Number</label>
+                        <input type="text" id="whatsapp" placeholder="03XXXXXXXXX" required class="text-left">
                     </div>
 
-                    <div class="form-group text-right">
-                        <label for="paymentMethod" class="font-urdu">طریقہ ادائیگی (Payment Method)</label>
-                        <select id="paymentMethod" required>
-                            <option value="" disabled selected>ادائیگی کا ذریعہ منتخب کریں...</option>
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="paymentMethod" class="block text-left font-bold text-slate-700">Payment Method</label>
+                        <select id="paymentMethod" required class="text-left">
+                            <option value="" disabled selected>Select Payment Method...</option>
                             <option value="JazzCash">JazzCash</option>
                             <option value="EasyPaisa">EasyPaisa</option>
                             <option value="Bank Transfer">Bank Transfer</option>
                         </select>
                     </div>
 
-                    <div class="form-group text-right">
-                        <label for="tid" class="font-urdu">رقم بھیجنے کا آئی ڈی نمبر (TID)</label>
-                        <input type="text" id="tid" placeholder="e.g., 24062412345" required>
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="profession" class="block text-left font-bold text-slate-700">Profession</label>
+                        <select id="profession" required class="text-left">
+                            <option value="" disabled selected>Select Profession...</option>
+                            <option value="Student">Student</option>
+                            <option value="Teacher">Teacher / Trainer</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Job Holder">Job Holder</option>
+                            <option value="Housewife">Housewife</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
 
-                    <div class="form-group text-right">
-                        <label class="font-urdu">پیمنٹ رسید کا اسکرین شاٹ (Upload Receipt)</label>
-                        <div class="file-drop-area">
-                            <span class="file-msg">📸 رسید اپلوڈ کرنے کے لیے یہاں کلک کریں</span>
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="ageRange" class="block text-left font-bold text-slate-700">Age Range</label>
+                        <select id="ageRange" required class="text-left">
+                            <option value="" disabled selected>Select Age Range...</option>
+                            <option value="Under 18">Under 18</option>
+                            <option value="18-24">18 to 24</option>
+                            <option value="25-34">25 to 34</option>
+                            <option value="35-44">35 to 44</option>
+                            <option value="45+">45+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="gender" class="block text-left font-bold text-slate-700">Gender</label>
+                        <select id="gender" required class="text-left">
+                            <option value="" disabled selected>Select Gender...</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-left" dir="ltr">
+                        <label for="tid" class="block text-left font-bold text-slate-700">Transaction ID (TID)</label>
+                        <input type="text" id="tid" placeholder="e.g., 24062412345" required class="text-left">
+                    </div>
+
+                    <div class="form-group text-left" dir="ltr">
+                        <label class="block text-left font-bold text-slate-700">Upload Payment Receipt</label>
+                        <div class="file-drop-area text-left">
+                            <span class="file-msg">📸 Click to upload payment screenshot</span>
                             <input type="file" id="paymentSlip" accept="image/*" required onchange="updateFileName(this)">
                         </div>
                     </div>
 
-                    <!-- Live Hope / Promise Section (Nastaliq) -->
+                    <!-- Live Hope / Promise Section (Nastaliq centered for emotional connection) -->
                     <div class="bg-emerald-50 rounded-2xl p-5 text-center text-emerald-950 text-sm leading-relaxed mb-6 border border-emerald-100 font-urdu">
                         🌱 <strong>امید کی ایک نئی صبح آپ کا انتظار کر رہی ہے؛ آئیے مل کر اپنے حالات بدلتے ہیں!</strong><br>
                         حلال کمائی کی شروعات کا فیصلہ صرف ایک کلک دور ہے۔
@@ -667,27 +707,27 @@
             </div>
         </section>
 
-        <!-- FAQ Accordion (Updated to align LTR strictly for perfect Roman Question Marks) -->
+        <!-- FAQ Accordion (Strict LTR direction alignment for absolute question marks positioning) -->
         <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-16 border border-slate-100 text-left" dir="ltr">
             <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center">Aksar Pooche Janey Wale Sawalat (FAQ)</h3>
 
             <div class="space-y-4">
                 <div class="border-b border-slate-100 pb-4">
                     <button type="button" onclick="toggleFaq(1)" class="w-full flex justify-between items-center text-slate-900 font-bold text-lg focus:outline-none">
-                        <span class="w-full text-left" dir="ltr">1. Kya yeh guide waqayee naye logon ke liye aasan hai?</span>
+                        <span class="w-full text-left">1. Kya yeh guide waqayee naye logon ke liye aasan hai?</span>
                         <i id="faq-icon-1" class="fa-solid fa-chevron-down text-slate-400 transition-transform ml-2"></i>
                     </button>
-                    <div id="faq-ans-1" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left" dir="ltr">
+                    <div id="faq-ans-1" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left">
                         Ji han, bilkul! Is guide ko is tarah likha gaya hai ke agar aap ne kabhi Facebook Monetization par kaam nahi kiya, to bhi aap pehle din se seekh kar asani se shuruat kar sakte hain.
                     </div>
                 </div>
 
                 <div class="border-b border-slate-100 pb-4">
                     <button type="button" onclick="toggleFaq(2)" class="w-full flex justify-between items-center text-slate-900 font-bold text-lg focus:outline-none">
-                        <span class="w-full text-left" dir="ltr">2. Mujhe guide aur premium bonuses kis tarah milenge?</span>
+                        <span class="w-full text-left">2. Mujhe guide aur premium bonuses kis tarah milenge?</span>
                         <i id="faq-icon-2" class="fa-solid fa-chevron-down text-slate-400 transition-transform ml-2"></i>
                     </button>
-                    <div id="faq-ans-2" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left" dir="ltr">
+                    <div id="faq-ans-2" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left">
                         Jaise hi aap order form submit karenge, aapka order successfully register ho jayega aur fauran hi guide aur tamam 8 bonuses ka download link automatically aap ke email address par bhej diya jayega.
                     </div>
                 </div>
@@ -697,7 +737,7 @@
                         <span class="w-full text-left" dir="ltr">3. Kya Facebook Monetization Pakistan mein kaam kar rahi hai?</span>
                         <i id="faq-icon-3" class="fa-solid fa-chevron-down text-slate-400 transition-transform ml-2"></i>
                     </button>
-                    <div id="faq-ans-3" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left" dir="ltr">
+                    <div id="faq-ans-3" class="hidden mt-3 text-slate-600 text-sm leading-relaxed text-left">
                         Ji han! 2026 mein Pakistan mein rehte hue official aur doosre mahfooz tareeqon ke zariye Facebook se halal rozgar kamana aur seedha Pakistani banks mein paise receive karna bilkul mumkin aur asan ho chuka hai.
                     </div>
                 </div>
@@ -831,6 +871,9 @@
                 formData.append('name', document.getElementById('name').value);
                 formData.append('email', document.getElementById('email').value);
                 formData.append('whatsapp', document.getElementById('whatsapp').value);
+                formData.append('profession', document.getElementById('profession').value);
+                formData.append('ageRange', document.getElementById('ageRange').value);
+                formData.append('gender', document.getElementById('gender').value);
                 formData.append('paymentMethod', document.getElementById('paymentMethod').value);
                 formData.append('tid', document.getElementById('tid').value);
                 formData.append('fileContent', base64Data);
