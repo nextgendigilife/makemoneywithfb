@@ -855,6 +855,9 @@ src="https://www.facebook.com/tr?id=2120262358873667&ev=PageView&noscript=1"
                 .then(response => response.json())
                 .then(data => {
                     if(data.result === 'success') {
+                        // Facebook Pixel Purchase event fire karna
+                        fbq('track', 'Purchase', {value: 299.00, currency: 'PKR'});
+
                         // Poore form aur payment details ko hide kar dena
                         document.getElementById('paymentForm').style.display = 'none';
                         document.querySelector('.payment-box').style.display = 'none';
